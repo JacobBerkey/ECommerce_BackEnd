@@ -13,6 +13,8 @@ namespace eCommerceStarterCode.Models
         public int Rating { get; set; }
         public string Category { get; set; }
 
+        public ICollection<ShoppingCart>ShoppingCarts { get; set; }
+
     }
 
 }

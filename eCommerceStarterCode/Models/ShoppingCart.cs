@@ -14,10 +14,10 @@
 using System.ComponentModel.DataAnnotations.Schema;
 namespace eCommerceStarterCode.Models
 {
+
+   
     public class ShoppingCart
     {
-        public int CartId { get; set; }
-        
         
         public int Quantity { get; set; }
         [ForeignKey("User")]
