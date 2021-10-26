@@ -58,7 +58,6 @@ namespace eCommerceStarterCode.Controllers
             {
                 return StatusCode(404, "Not Found");
             }
-           
         }
 
     }
