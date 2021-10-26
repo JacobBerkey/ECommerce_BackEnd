@@ -23,12 +23,13 @@ namespace eCommerceStarterCode.Data
 
             modelBuilder.ApplyConfiguration(new RolesConfiguration());
 
-
             modelBuilder.Entity<ShoppingCart>(entity =>
             {
                 entity.HasKey(e => new { e.UserId, e.ProductId });
 
+             
             });
+
 
 
         }

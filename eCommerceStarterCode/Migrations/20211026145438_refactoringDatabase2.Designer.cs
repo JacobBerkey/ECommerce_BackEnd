@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommerceStarterCode.Data;
 
 namespace eCommerceStarterCode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211026145438_refactoringDatabase2")]
+    partial class refactoringDatabase2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,25 +50,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-<<<<<<< HEAD
-                            Id = "803068f2-d284-405e-a22e-ba76145fe144",
-                            ConcurrencyStamp = "3c8c94f1-7781-4cd1-bb6a-0372ac8d8444",
-=======
                             Id = "60ee413b-d884-49bd-bfc0-f222c4eca2bf",
                             ConcurrencyStamp = "4f81b8cd-8e63-443a-a7fc-3b15ac8d63bb",
->>>>>>> d6aeec3a55aaf79958145f658d9842d361a69fcd
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-<<<<<<< HEAD
-                            Id = "432a1d33-ac27-43b1-bef6-8871439aa355",
-                            ConcurrencyStamp = "064bce52-272d-42b8-b37b-6eb847e21125",
-=======
                             Id = "b53c9d36-b6d4-4dc7-b844-98182bb8af74",
                             ConcurrencyStamp = "60a03914-4787-4c03-a6a3-df39266352b3",
->>>>>>> d6aeec3a55aaf79958145f658d9842d361a69fcd
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -377,21 +369,13 @@ namespace eCommerceStarterCode.Migrations
             modelBuilder.Entity("eCommerceStarterCode.Models.ShoppingCart", b =>
                 {
                     b.HasOne("eCommerceStarterCode.Models.Product", "Product")
-<<<<<<< HEAD
-                        .WithMany()
-=======
                         .WithMany("ShoppingCarts")
->>>>>>> d6aeec3a55aaf79958145f658d9842d361a69fcd
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommerceStarterCode.Models.User", "User")
-<<<<<<< HEAD
-                        .WithMany()
-=======
                         .WithMany("ShoppingCarts")
->>>>>>> d6aeec3a55aaf79958145f658d9842d361a69fcd
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -400,8 +384,6 @@ namespace eCommerceStarterCode.Migrations
 
                     b.Navigation("User");
                 });
-<<<<<<< HEAD
-=======
 
             modelBuilder.Entity("eCommerceStarterCode.Models.Product", b =>
                 {
@@ -412,7 +394,6 @@ namespace eCommerceStarterCode.Migrations
                 {
                     b.Navigation("ShoppingCarts");
                 });
->>>>>>> d6aeec3a55aaf79958145f658d9842d361a69fcd
 #pragma warning restore 612, 618
         }
     }
