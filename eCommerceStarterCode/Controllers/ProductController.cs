@@ -35,5 +35,15 @@ namespace eCommerceStarterCode.Controllers
             var allProducts = _context.Products;
             return Ok(allProducts);  ;
         }
+
+        [HttpGet("id")]
+        public IActionResult Get(int id)
+        {
+            var allProducts = _context.Products;
+            //var product = allProducts.Where(p => p.ProductId = id);
+
+            return Ok(allProducts); 
+        }
+
     }
 }
