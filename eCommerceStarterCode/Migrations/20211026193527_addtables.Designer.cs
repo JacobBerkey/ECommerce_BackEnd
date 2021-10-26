@@ -10,8 +10,8 @@ using eCommerceStarterCode.Data;
 namespace eCommerceStarterCode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211026145438_refactoringDatabase2")]
-    partial class refactoringDatabase2
+    [Migration("20211026193527_addtables")]
+    partial class addtables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "60ee413b-d884-49bd-bfc0-f222c4eca2bf",
-                            ConcurrencyStamp = "4f81b8cd-8e63-443a-a7fc-3b15ac8d63bb",
+                            Id = "b52d519e-ee4b-409c-ac3e-74483ce6ce2c",
+                            ConcurrencyStamp = "3b969e88-55b9-4dd0-aba1-ca03b05cfd7e",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "b53c9d36-b6d4-4dc7-b844-98182bb8af74",
-                            ConcurrencyStamp = "60a03914-4787-4c03-a6a3-df39266352b3",
+                            Id = "c6492842-492a-4736-913a-b77d7659528c",
+                            ConcurrencyStamp = "a80e2efa-9e40-480d-a095-54a38edbf7d1",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -375,7 +375,7 @@ namespace eCommerceStarterCode.Migrations
                         .IsRequired();
 
                     b.HasOne("eCommerceStarterCode.Models.User", "User")
-                        .WithMany("ShoppingCarts")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -386,11 +386,6 @@ namespace eCommerceStarterCode.Migrations
                 });
 
             modelBuilder.Entity("eCommerceStarterCode.Models.Product", b =>
-                {
-                    b.Navigation("ShoppingCarts");
-                });
-
-            modelBuilder.Entity("eCommerceStarterCode.Models.User", b =>
                 {
                     b.Navigation("ShoppingCarts");
                 });
