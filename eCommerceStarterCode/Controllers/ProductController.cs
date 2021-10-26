@@ -36,13 +36,29 @@ namespace eCommerceStarterCode.Controllers
             return Ok(allProducts);  ;
         }
 
-        [HttpGet("id")]
-        public IActionResult Get(int id)
+        [HttpGet("{ProductId:int}")]
+        public IActionResult Get(int ProductId)
         {
-            var allProducts = _context.Products;
-            //var product = allProducts.Where(p => p.ProductId = id);
+            var product = _context.Products.Where(p => p.ProductId == ProductId).SingleOrDefault(); 
+            return Ok(product); 
+        }
 
-            return Ok(allProducts); 
+        [HttpDelete("{ProductId:int}")]
+        public IActionResult Delete(int productId)
+        {
+            var product = _context.Products.Where(p => p.ProductId == productId).SingleOrDefault();
+
+            if(product != null)
+            {
+                _context.Products.Remove(product);
+                _context.SaveChanges();
+                return StatusCode(202, "Item Deleted");
+            }
+            else
+            {
+                return StatusCode(404, "Not Found");
+            }
+           
         }
 
     }
