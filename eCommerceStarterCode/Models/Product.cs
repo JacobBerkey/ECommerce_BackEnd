@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.Collections.Generic;
 
 namespace eCommerceStarterCode.Models
@@ -15,6 +17,10 @@ namespace eCommerceStarterCode.Models
 
         public ICollection<ShoppingCart> ShoppingCarts { get; set; }
 
+        internal void ApplyTo(Product product, ModelStateDictionary modelState)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

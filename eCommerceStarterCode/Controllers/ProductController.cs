@@ -60,5 +60,31 @@ namespace eCommerceStarterCode.Controllers
             }
         }
 
+        [HttpPatch("{ProductId:int}")]
+        public IActionResult Patch(int ProductId, [FromBody] int rating)
+        {
+            try
+            {
+                var product = _context.Products.Where(p => p.ProductId == ProductId).SingleOrDefault();
+
+                if (product == null)
+                {
+                    return StatusCode(404, "Product Not Found");
+                }
+                else
+                {
+                    product.Rating = rating;
+                    return Ok(product);
+                }
+            }
+            catch
+            {
+                return StatusCode(500, StatusCodes.Status500InternalServerError);
+            }
+
+
+            
+        }
+
     }
 }
