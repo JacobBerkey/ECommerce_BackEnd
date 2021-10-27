@@ -22,17 +22,11 @@
 //        [HttpGet]
 //        public IActionResult Get(string id)
 //        {
-//            var user = _context.Users.Where(u => u.Id = id).Select(u => u.Id).SingleOrDefault;
+//            var user = _context.Users.Where(u => u.Id == id).Select(u => u.Id).SingleOrDefault;
 //            return Ok(user);
 //        }
 
-//        //Post api/user
-//        [HttpPost]
-//        public IActionResult Post([FromBody] User value)
-//        {
-//            _context.Users.Add(value);
-//            _context.SaveChanges();
-//            return StatusCode(201, value);
+        
 //        }
 
 //    }
