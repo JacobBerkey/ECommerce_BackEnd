@@ -3,6 +3,7 @@ using eCommerceStarterCode.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,10 +60,21 @@ namespace eCommerceStarterCode.Controllers
                 return NotFound("User not Found");
             }
 
-            var allUserProducts = _context.ShoppingCarts.Where(sc => (sc.UserId == userId));
-            return Ok(allUserProducts);
+
+            var allUserProducts = _context.ShoppingCarts
+                                          .Include(sc => sc.Product)
+                                          .Select(sc => new { sc.UserId, sc.ProductId, sc.Product.Name, sc.Quantity, sc.Product.Price, sc.Product.Description, sc.Product.Category,
+                                              ExtendedPrice = sc.Quantity * sc.Product.Price })
+                                          .ToList();
+
+         
+             return Ok(allUserProducts);
         }
 
+
+
+        //.Where(sc => (sc.UserId == userId))
+        // .Select(sc => sc.Product.Name)
 
 
         [HttpDelete("{productId}")]
