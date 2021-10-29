@@ -60,23 +60,17 @@ namespace eCommerceStarterCode.Controllers
                 return NotFound("User not Found");
             }
 
-
             var allUserProducts = _context.ShoppingCarts
                                           .Include(sc => sc.Product)
                                           .Select(sc => new { sc.UserId, sc.ProductId, sc.Product.Name, sc.Quantity, sc.Product.Price, sc.Product.Description, sc.Product.Category,
-                                              ExtendedPrice = sc.Quantity * sc.Product.Price })
+                                                              ExtendedPrice = sc.Quantity * sc.Product.Price})
                                           .ToList();
-
-         
              return Ok(allUserProducts);
         }
 
 
 
-        //.Where(sc => (sc.UserId == userId))
-        // .Select(sc => sc.Product.Name)
-
-
+            
         [HttpDelete("{productId}")]
         public IActionResult Delete(int ProductId)
         {

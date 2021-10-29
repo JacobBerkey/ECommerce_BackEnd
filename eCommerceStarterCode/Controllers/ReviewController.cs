@@ -21,6 +21,22 @@ namespace eCommerceStarterCode.Controllers
             _context = context;
         }
 
+        [HttpGet("{ProductId:int}")]
+        public IActionResult Get(int productId)
+        {
+            var userId = User.FindFirstValue("id");
+            var user = _context.Users.Find(userId);
+            if (user == null)
+            {
+                return NotFound("User not Found");
+            }
+
+            var productReview = _context.Reviews.Where(re => re.ProductId == productId);
+         
+            return Ok(productReview);
+        }
+
+
         [HttpPost("{productId}"), Authorize]
         public IActionResult Post(int productId, [FromBody] Review value)
         {
